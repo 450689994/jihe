@@ -2,7 +2,7 @@
   <div>
     <h1>Welcome to TaoChenArea</h1>
     <br />
-    <a href="#" @click="other">点击发送其他请求</a>
+    <a href="#" @click="other">点击发送其他请求（token有效期30s）</a>
   </div>
 </template>
 

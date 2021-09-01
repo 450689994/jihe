@@ -69,6 +69,10 @@ public class UserService implements IUserService {
             throw new RuntimeException();
         }
         User user = userRepository.queryByName(username);
+        //如果数据库中有这个人，那就存放到redis中
+        if(user != null){
+            redisTemplate.opsForValue().set(user.getUsername(),user.getPassword());
+        }
         return user != null;
     }
 }

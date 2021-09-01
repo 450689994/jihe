@@ -1,18 +1,21 @@
-spring:
-  datasource:
-    driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://43.128.13.32:3306/myproject?allowMultiQueries=true&useUnicode=true&allowPublicKeyRetrieval=true&characterEncoding=utf-8&useSSL=false&serverTimezone=Asia/Shanghai
-    username: remote
-    password: cbt123
+c3p0:
+  driverClass: com.mysql.cj.jdbc.Driver
+  jdbcUrl: jdbc:mysql://43.128.13.32:3306/myproject?allowMultiQueries=true&useUnicode=true&allowPublicKeyRetrieval=true&characterEncoding=utf-8&useSSL=false&serverTimezone=Asia/Shanghai
+  user: remote
+  password: cbt123
+  type: com.mchange.v2.c3p0.ComboPooledDataSource
+  maxPoolSize: 200
+  minPoolSize: 10
+  initialPoolSize: 10
+  acquireIncrement: 5
+  idleConnectionTestPeriod: 28000
+  maxIdleTime: 0   #连接的最大空闲时间，0表示无限长
 
   redis:
     host: 43.128.13.32
     port: 6379
     database: 0
     #password:
-
-    hikari:
-      max-lifetime: 50
 
 
 server:
@@ -24,4 +27,4 @@ mybatis:
 
 logging:
   level:
-    com.example.dao : debug
+    com.tao.back_project.dao : debug
