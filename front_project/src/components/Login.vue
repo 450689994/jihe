@@ -16,7 +16,9 @@
               </td>
           </tr>
       </table>
-
+        <br>
+        <a href="https://github1s.com/450689994/jihe">点击此处通过在线编辑器打开项目于（GitHub1s）</a><br>
+    <a href="https://github.com/450689994/jihe">点击此处进入GitHub打开项目</a>
   </div>
 </template>
 

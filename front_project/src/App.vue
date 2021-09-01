@@ -1,6 +1,6 @@
 <template>
   <div id="login">
-    <router-view id="routerArea"> </router-view>
+    <router-view id="routerArea"> </router-view><br>
   </div>
 </template>
 
