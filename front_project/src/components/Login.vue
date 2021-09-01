@@ -43,10 +43,11 @@
                 const url = 'http://localhost:8080/back/login';
                 axios.post(url,user).then(
                     response => {
-                        alert(response.data.data);
                        if(response.data.message == '失败'){
                            alert("账号或密码错误");
                        }else{
+                           //保存token(string类型)
+                           localStorage.setItem('token',JSON.stringify(response.data.data));
                            if(confirm("登录成功，点击确定进入主页面！")){
                                this.$router.push('main')
                            }

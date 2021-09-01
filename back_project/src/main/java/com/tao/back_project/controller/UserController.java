@@ -27,6 +27,7 @@ public class UserController {
         }
     }
 
+    @PassToken
     @PostMapping("register")
     public Result register(@RequestBody User user){
         try {
@@ -38,6 +39,7 @@ public class UserController {
         }
     }
 
+    @PassToken
     @GetMapping("checkName")
     public Result checkName(String username){
         try {
@@ -49,5 +51,10 @@ public class UserController {
         }catch (Exception e){
             return new Result(500,false,"失败",null);
         }
+    }
+
+    @GetMapping("other")
+    public Result other(){
+        return new Result(200,true,"成功",null);
     }
 }

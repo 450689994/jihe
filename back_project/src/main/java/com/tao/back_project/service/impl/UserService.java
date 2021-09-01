@@ -53,10 +53,8 @@ public class UserService implements IUserService {
         if (add == 0)
             throw new RuntimeException();
         //新用户加入redis缓存
-        System.out.println("新用户加入redis");
         redisTemplate.opsForValue().set(user.getUsername(),user.getPassword());
         String pass = (String)redisTemplate.opsForValue().get(user.getUsername());
-        System.out.println("缓存中的密码是："+pass);
     }
 
     @Override

@@ -27,4 +27,4 @@ export default new VueRouter({
             component:Main
         }
     ]
-})
+});

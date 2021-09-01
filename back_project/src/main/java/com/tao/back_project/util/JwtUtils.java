@@ -3,10 +3,7 @@ package com.tao.back_project.util;
 import com.auth0.jwt.JWT;
 import com.auth0.jwt.JWTVerifier;
 import com.auth0.jwt.algorithms.Algorithm;
-import com.auth0.jwt.exceptions.JWTDecodeException;
-import com.auth0.jwt.interfaces.DecodedJWT;
 
-import java.io.Serializable;
 import java.util.Date;
 
 public class JwtUtils {
@@ -14,36 +11,39 @@ public class JwtUtils {
 
     public static String createToken(String uid) {
 
-        Date expiresDate = new Date(System.currentTimeMillis()+1000*60*30);     //30分钟
+        Date expiresDate = new Date(System.currentTimeMillis() + 1000 * 30);     //30s
 
         return JWT.create().withAudience(uid)   //签发对象
                 .withIssuedAt(new Date())    //发行时间
                 .withExpiresAt(expiresDate)  //有效时间
-                .sign(Algorithm.HMAC256(uid+"TaoChenSecret"));   //加密
+                .sign(Algorithm.HMAC256(uid + "TaoChenSecret"));   //加密
     }
 
-    public static void verifyToken(String token, String uid) {
+    public static boolean verifyToken(String token, String uid) {
+        JWTVerifier verifier = JWT.require(Algorithm.HMAC256(uid + "TaoChenSecret")).build();
         try {
-            JWTVerifier verifier = JWT.require(Algorithm.HMAC256(uid+"TaoChenSecret")).build();
             verifier.verify(token);
-        } catch (Exception e) {
-            throw new RuntimeException();
+        }catch (Exception e){
+            return false;
         }
+        return true;
     }
 
     public static String getAudience(String token) {
-        String audience = null;
-        try {
-            audience = JWT.decode(token).getAudience().get(0);
-        } catch (JWTDecodeException j) {
-            //这里是token解析失败
-            throw new RuntimeException();
+        return JWT.decode(token).getAudience().get(0);
+    }
+
+    public static boolean isEffective(String token){
+        Date date = JWT.decode(token).getExpiresAt();
+        //有效期比先在时间小
+        if (date.compareTo(new Date()) < 0){
+            return false;
         }
-        return audience;
+        return true;
     }
 
     public static void main(String[] args) {
-        verifyToken(createToken("2"),"1");
+        verifyToken(createToken("2"), "1");
     }
 }
 

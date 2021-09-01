@@ -61,6 +61,7 @@ export default {
   },
   methods: {
     register: function () {
+      
       if (this.password_sgin == false) {
         return;
       }
@@ -70,6 +71,7 @@ export default {
       };
       const url = "http://localhost:8080/back/register";
       axios.post(url, user).then((response) => {
+        console.log(response)
         if (response.data.message == "失败") {
           alert("注册失败！是不是偷偷关闭了js！");
         } else {
