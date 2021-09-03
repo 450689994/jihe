@@ -23,6 +23,7 @@ public class UserController {
             //将token作为返回值
             return new Result(200,true,"成功",token);
         }catch (Exception e){
+            e.printStackTrace();
             return new Result(500,false,"失败",null);
         }
     }

@@ -4,6 +4,7 @@ module.exports = {
       entry: 'src/main.js'
     }
   },
+  publicPath: '/',
   devServer: {
     proxy: {
       '/back': {

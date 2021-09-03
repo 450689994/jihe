@@ -1,8 +1,8 @@
 c3p0:
   driverClass: com.mysql.cj.jdbc.Driver
   jdbcUrl: jdbc:mysql://43.128.13.32:3306/myproject?allowMultiQueries=true&useUnicode=true&allowPublicKeyRetrieval=true&characterEncoding=utf-8&useSSL=false&serverTimezone=Asia/Shanghai
-  user: remote
-  password: cbt123
+  user: root
+  password: Taochen
   type: com.mchange.v2.c3p0.ComboPooledDataSource
   maxPoolSize: 200
   minPoolSize: 10
@@ -10,7 +10,9 @@ c3p0:
   acquireIncrement: 5
   idleConnectionTestPeriod: 28000
   maxIdleTime: 0   #连接的最大空闲时间，0表示无限长
+  MaxConnectionAge: 0
 
+spring:
   redis:
     host: 43.128.13.32
     port: 6379
