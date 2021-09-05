@@ -13,7 +13,7 @@ export default {
     other: function () {
       var token = JSON.parse(localStorage.getItem("token"));
       axios({
-        url: "http://localhost:8080/back/other",
+        url: "http://43.128.13.32:9999/other",
         method: "get",
         headers: {
           token: token,

@@ -1,13 +1,5 @@
 version: "3"
 services:
-  nginx: # 服务名称，用户自定义
-    image: nginx:latest  # 镜像版本
-    ports:
-      - 80:80  # 暴露端口
-    volumes: # 挂载
-      - /home/ubuntu/nginx/html:/usr/share/nginx/html
-      - /home/ubuntu/nginx/nginx.conf:/etc/nginx/nginx.conf
-    privileged: true # 这个必须要，解决nginx的文件调用的权限问题
   mysql:
     image: mysql:8.0.26
     ports:

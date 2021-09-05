@@ -69,7 +69,7 @@ export default {
         username: this.username,
         password: md5(this.password),
       };
-      const url = "http://localhost:8080/back/register";
+      const url = "http://43.128.13.32:9999/register";
       axios.post(url, user).then((response) => {
         console.log(response)
         if (response.data.message == "失败") {
@@ -83,7 +83,7 @@ export default {
     },
     checkName: function () {
       var url =
-        "http://localhost:8080/back/checkName?username=" + this.username;
+        "http://43.128.13.32:9999/checkName?username=" + this.username;
       axios.get(url).then((response) => {
         if (response.data.message == "失败") {
           this.username_sgin = true;

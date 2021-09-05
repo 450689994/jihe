@@ -42,7 +42,7 @@
                     "username":this.username,
                     "password":md5(this.password)
                 }
-                const url = 'http://localhost:8080/back/login';
+                const url = 'http://43.128.13.32:9999/login';
                 axios.post(url,user).then(
                     response => {
                        if(response.data.message == '失败'){
